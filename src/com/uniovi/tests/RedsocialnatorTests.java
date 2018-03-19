@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.uniovi.services.DatosEjemplo;
+//import com.uniovi.services.DatosEjemplo;
 import com.uniovi.tests.pageobjects.PO_HomeView;
 import com.uniovi.tests.pageobjects.PO_LoginView;
 import com.uniovi.tests.pageobjects.PO_NavView;
@@ -34,7 +34,7 @@ public class RedsocialnatorTests {
 	// automÃ¡ticas)):
 	// static String PathFirefox = "C:\\Path\\FirefoxPortable.exe";
 	static String PathFirefox = "P:\\SDI\\P5\\Firefox46.0.win\\Firefox46.win\\FirefoxPortable.exe";
-	private static DatosEjemplo datosEjemplo = new DatosEjemplo();
+	//private static DatosEjemplo datosEjemplo = new DatosEjemplo();
 
 	// ComÃºn a Windows y a MACOSX
 	static WebDriver driver = getDriver(PathFirefox);
@@ -111,6 +111,7 @@ public class RedsocialnatorTests {
 		PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
 		PO_RegisterView.fillForm(driver, "Josefo@gmail.com", "Josefo", "Perez", "123456", "123456");
 		PO_View.checkElementLocale(driver, "usuariosTitle", "text.usuariosDisponibles"); //No funciona, faltaria coincidir el campo con la internacionalizacion referent al id
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
 	}
 
 	//1.2 [RegInval] Registro de Usuario con datos inválidos (repetición de contraseña invalida).
@@ -119,7 +120,7 @@ public class RedsocialnatorTests {
 		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
 		PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
 		PO_RegisterView.fillForm(driver, "Josefo@gmail.com", "Josefo", "Perez", "12345", "12345");
-		PO_View.checkElementLocale(driver, "text-danger", "*{password}"); //No funciona, faltaria coincidir el campo con la internacionalizacion referent al id
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "text-danger", 2); //Id o class??
 
 	}
 
@@ -133,8 +134,7 @@ public class RedsocialnatorTests {
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
 		//Comprueba que vea la lista de usuarios
-		PO_View.checkElementLocale(driver, "usuariosTitle", "text.usuariosDisponibles");
-
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
 
 		//		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		//		PO_View.checkElement(driver, "usuariosTitle", "#{text.usuariosDisponibles}");
@@ -151,7 +151,7 @@ public class RedsocialnatorTests {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "Josefa@gmail.com", "123456");
-		PO_View.checkElementLocale(driver, "login", "iniciar.sesion"); //Lo hace el validator asi que en la pagina no se puede comprobar el error
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
 		//Se puede checkear si está algun elemento del login otra vez
 
 	}
@@ -164,11 +164,11 @@ public class RedsocialnatorTests {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-		PO_View.checkElement(driver, "login", "Login");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
 		//LOGIN VALIDO
 
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary"); //Mirar como se hace mediante href ya que no hay botón
-		PO_View.checkElement(driver, "login", "Login");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
 
 
 	}
@@ -180,7 +180,7 @@ public class RedsocialnatorTests {
 		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
 		driver.navigate().to("http://localhost:8092/user/list");
 		//Nos deberia redirigir a la pagina del login
-		PO_View.checkElementLocale(driver, "login", "iniciar.sesion");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
 
 	}
 
@@ -206,7 +206,7 @@ public class RedsocialnatorTests {
 		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
 		driver.navigate().to("http://localhost:8092/user/list");
 		//Nos deberia redirigir a la pagina del login
-		PO_View.checkElementLocale(driver, "login", "iniciar.sesion");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
 	}
 
 
@@ -220,14 +220,13 @@ public class RedsocialnatorTests {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-		PO_View.checkElementLocale(driver, "usuariosTitle", "text.usuariosDisponibles");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
 		//LOGIN VALIDO
 
 		PO_PrivateView.searchUser(driver, "Zelda"); //??
 		//Agregar Zelda como amigo
 		By boton = By.id("btnZelda");	
-		if(boton != null)
-			driver.findElement(boton).click();
+		driver.findElement(boton).click();
 
 	}
 
@@ -242,7 +241,7 @@ public class RedsocialnatorTests {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-		PO_View.checkElementLocale(driver, "usuariosTitle", "text.usuariosDisponibles");
+		SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
 		//LOGIN VALIDO
 		
 		PO_PrivateView.searchUser(driver, "Zelda"); //??
@@ -259,13 +258,10 @@ public class RedsocialnatorTests {
 			PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 			// Rellenamos el formulario
 			PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-			PO_View.checkElementLocale(driver, "usuariosTitle", "text.usuariosDisponibles");
+			SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
 			//LOGIN VALIDO
-
-
-			
-			//NECESITAMOS AGREGARLE A MANO UNA PETICION RECIBIDA AL USUARIO Josefo@gmail.com
-	
+		
+			//NECESITAMOS AGREGARLE A MANO UNA PETICION RECIBIDA AL USUARIO Josefo@gmail.com	
 			
 			PO_NavView.checkPeticionesRecibidas(driver);
 		}

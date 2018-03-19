@@ -62,8 +62,22 @@ public class PO_NavView extends PO_View {
 		elementos = SeleniumUtils.EsperaCargaPagina(driver, "id", "peticionesDropdown", getTimeout());
 		SeleniumUtils.esperarSegundos(driver, 2);
 
-		elementos = SeleniumUtils.EsperaCargaPagina(driver, "id", "Peticiones recibidas", getTimeout());
+		elementos = SeleniumUtils.EsperaCargaPagina(driver, "id", "peticionesRecibidas", getTimeout());
 		elementos.get(0).click();
+
+	}
+	
+	
+	public static void checkPeticionesEnviadas(WebDriver driver) {
+		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "id", "users-menu", getTimeout());
+		elementos.get(0).click();
+
+		// Esperamos a que aparezca el menú de opciones.
+		elementos = SeleniumUtils.EsperaCargaPagina(driver, "id", "peticionesDropdown", getTimeout());
+		SeleniumUtils.esperarSegundos(driver, 2);
+
+		elementos = SeleniumUtils.EsperaCargaPagina(driver, "id", "peticionesEnviadas", getTimeout());
+		elementos.get(1).click();
 
 	}
 }
