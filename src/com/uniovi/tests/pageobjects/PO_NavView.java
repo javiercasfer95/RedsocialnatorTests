@@ -81,6 +81,16 @@ public class PO_NavView extends PO_View {
 
 	}
 	
+	public static void accederPeticionesEnviadas(WebDriver driver) {
+		clickOption(driver, "id", "userPeticionesMenu");
+		clickOption(driver, "id", "peticionesEnviadas");
+	}
+	
+	public static void accederPeticionesRecibidas(WebDriver driver) {
+		clickOption(driver, "id", "userPeticionesMenu");
+		clickOption(driver, "id", "peticionesRecibidas");
+	}
+	
 	public static void clickOptionConCriterio(WebDriver driver, String textOption, String criterio, String textoDestino) {
 		// CLickamos en la opción de registro y esperamos a que se cargue el enlace de
 		// Registro.

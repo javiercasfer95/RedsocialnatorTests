@@ -96,7 +96,7 @@ public class RedsocialnatorTests {
 	 */
 	// 1.1 [RegVal] Registro de Usuario con datos válidos.
 	@Test
-	public void RegVal() {
+	public void T01_1_RegVal() {
 		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
 		PO_HomeView.clickOption(driver, "signup", "id", "signup");
 		PO_RegisterView.fillForm(driver, "JaviTest@email.com", "JaviTest", "Castro", "123456", "123456");
@@ -109,7 +109,7 @@ public class RedsocialnatorTests {
 	// 1.2 [RegInval] Registro de Usuario con datos inv�lidos (repetici�n de
 	// contrase�a invalida).
 	@Test
-	public void RegInval() {
+	public void T01_2_RegInval() {
 
 		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
 		PO_HomeView.clickOption(driver, "signup", "id", "signup");
@@ -123,7 +123,7 @@ public class RedsocialnatorTests {
 	// 2.1 [InVal] Inicio de sesi�n con datos v�lidos.
 	// home
 	@Test
-	public void InVal() {
+	public void T02_1_InVal() {
 		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
 		// Vamos al formulario de logueo.
 		PO_HomeView.clickOption(driver, "login", "id", "login");
@@ -133,145 +133,150 @@ public class RedsocialnatorTests {
 		PO_View.checkElement(driver, "id", "bienvenidaUser");
 
 	}
-	//
-	// //2.2 [InInVal] Inicio de sesi�n con datos inv�lidos (usuario no existente en
-	// la aplicaci�n).
-	// // Español
-	// @Test
-	// public void InInVal() {
-	// // PO_HomeView.checkChangeIdiom(driver, "btnSpanish", "btnEnglish",
-	// PO_Properties.getSPANISH(),
-	// // PO_Properties.getENGLISH());
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "Josefa@gmail.com", "123456");
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
-	// //Se puede checkear si est� algun elemento del login otra vez
-	//
-	// }
-	//
-	// //3.1 [LisUsrVal] Acceso al listado de usuarios desde un usuario en sesi�n.
-	// @Test
-	// public void LisUsrVal() {
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
-	// //LOGIN VALIDO
-	//
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary"); //Mirar
-	// como se hace mediante href ya que no hay bot�n
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
-	//
-	//
-	// }
-	//
-	// //3.2 [LisUsrInVal] Intento de acceso con URL desde un usuario no
-	// identificado al listado de usuarios
-	// //desde un usuario en sesi�n. Debe producirse un acceso no permitido a vistas
+
+	// 2.2 [InInVal] Inicio de sesión con datos inválidos (usuario no existente en
+	// la aplicación).
+	// Español
+	@Test
+	public void T02_2_InInVal() {
+		// PO_HomeView.checkChangeIdiom(driver, "btnSpanish", "btnEnglish",
+		// PO_Properties.getSPANISH(),
+		// PO_Properties.getENGLISH());
+		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "id", "login");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "Josefa@gmail.com", "123456");
+		// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
+		// Se puede checkear si est� algun elemento del login otra vez
+		PO_View.checkElement(driver, "id", "errorLogin");
+
+	}
+
+	// 3.1 [LisUsrVal] Acceso al listado de usuarios desde un usuario en sesion
+	@Test
+	public void T03_1_LisUsrVal() {
+		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "id", "login");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "javier@correo.es", "123456");
+		// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
+		// LOGIN VALIDO
+		// Una vez dentro clickamos en home y que nos lleve a la lista de usuarios del
+		// sistema.
+		PO_HomeView.clickOption(driver, "id", "userListPage");
+
+		// Se comprueba que esta el texto de la pagina que dice que esos son los
+		// usuarios que hay en el sistema.
+		PO_View.checkElement(driver, "id", "parrafoUsuariosSistema");
+
+	}
+
+	// 3.2 [LisUsrInVal] Intento de acceso con URL desde un usuario no identificado
+	// al listado de usuarios
+	// desde un usuario en sesi�n. Debe producirse un acceso no permitido a vistas
 	// privadas
-	// @Test
-	// public void LisUsrInVal() {
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// driver.navigate().to("http://localhost:8092/user/list");
-	// //Nos deberia redirigir a la pagina del login
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
+	@Test
+	public void T03_2_LisUsrInVal() {
+		PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
+		driver.navigate().to("http://localhost:8090/user/list");
+		// Nos deberia redirigir a la pagina del login
+		// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
+		PO_View.checkElement(driver, "id", "identificateField");
+	}
+
+	// 4.1 [BusUsrVal] Realizar una busqueda valida en el listado de usuarios desde
+	// un usuario en sesion
+	@Test
+	public void T04_1_BusUsrVal() {
+		// Login valido
+		iniciarSesion("javier@correo.es", "123456");
+		PO_PrivateView.searchUser(driver, "Zelda");
+		PO_View.checkElement(driver, "id", "filaDeZeldaValles@default.es");
+
+	}
+
+	// 4.2 [BusUsrInVal] Intento de acceso con URL a la busqueda de usuarios desde
+	// un usuario no identificado. Debe producirse un acceso no permitido a vistas
+	// privadas.
+	@Test
+	public void T04_2_BusUsrInVal() {
+		driver.navigate().to("http://localhost:8090/user/list?searchText=Zelda");
+		// Nos deberia redirigir a la pagina del login
+		PO_View.checkElement(driver, "id", "identificateField");
+	}
+
+	// 5.1 [InvVal] Enviar una invitacion de amistad a un usuario de forma valida.
+	@Test
+	public void T05_1_InvVal() {
+		// Login valido
+		iniciarSesion("javier@correo.es", "123456");
+		PO_PrivateView.clickOption(driver, "id", "btnAshRodriguez@default.es");
+		assertTrue(PO_View.checkElementExists(driver, "id", "btnAshRodriguez@default.es") == false);
+		PO_NavView.accederPeticionesEnviadas(driver);
+		// btnAshRodriguez@default.es
+		PO_View.checkElement(driver, "id", "filaDeAshRodriguez@default.es");
+	}
+
+	/*
+	 * 5.2 [InvInVal] Enviar una invitacion de amistad a un usuario al que ya le
+	 * habiamos invitado la invitacion previamente. No debera dejarnos enviar la
+	 * invitacion, se podra ocultar el boton de enviar invitacion notificar que ya
+	 * habra sido enviada previamente.
+	 * 
+	 * TAMBIEN COMPRUEBA EL ACCESO POR URL
+	 */
+	@Test
+	public void T05_2_InvInVal() {
+
+		iniciarSesion("javier@correo.es", "123456");
+
+		// Compruebo que ya le he enviado la peticion
+		PO_NavView.accederPeticionesEnviadas(driver);
+		// btnAshRodriguez@default.es
+		PO_View.checkElement(driver, "id", "filaDeAshRodriguez@default.es");
+
+		// Vuelvo a la pagina de listar usuarios y compruebo que no este el boton de ese
+		// usuario al que le envie la peticion
+		PO_PrivateView.clickOption(driver, "id", "userListPage");
+		assertTrue(PO_View.checkElementExists(driver, "id", "btnAshRodriguez@default.es") == false);
+
+		// /peticion/enviarPeticion?emailRecibe=JaviTest@email.com
+
+		// Lo intentamos hacer desde la url
+		driver.navigate().to("http://localhost:8090/peticion/enviarPeticion?emailRecibe=JaviTest@email.com");
+		PO_NavView.accederPeticionesEnviadas(driver);
+		assertTrue(PO_View.countElements(driver, "id", "filaDeAshRodriguez") == 1);
+
+	}
+
+	// 6.1 [LisInvVal] Listar las invitaciones recibidas por un usuario, realizar la
+	// comprobacion con una lista que al menos tenga una invitacion recibida.
+	@Test
+	public void T06_1_LisInvVal() {
+		resetDatabaseToDefault();
+		iniciarSesion("javier@correo.es", "123456");
+		// Vamos a la pagina de usuarios por si acaso
+		// PO_PrivateView.clickOption(driver, "id", "userListPage");
+		PO_PrivateView.searchUser(driver, "joni");
+		PO_PrivateView.clickOption(driver, "id", "btnjoni@correo.es");
+
+		PO_NavView.clickLogout(driver);
+		iniciarSesion("joni@correo.es", "123456");
+		PO_NavView.accederPeticionesRecibidas(driver);
+		PO_View.checkElement(driver, "id", "filaDejavier@correo.es");
+	}
+
 	//
-	// }
-	//
-	// //4.1 [BusUsrVal] Realizar una b�squeda valida en el listado de usuarios
-	// desde un usuario en sesi�n
-	// @Test
-	// public void BusUsrVal() {
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-	// //LOGIN VALIDO
-	//
-	// PO_PrivateView.searchUser(driver, "Zelda");
-	//
-	//
-	// }
-	//
-	// //4.2 [BusUsrInVal] Intento de acceso con URL a la b�squeda de usuarios desde
-	// un usuario no
-	// //identificado. Debe producirse un acceso no permitido a vistas privadas.
-	// @Test
-	// public void BusUsrInVal() {
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// driver.navigate().to("http://localhost:8092/user/list");
-	// //Nos deberia redirigir a la pagina del login
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
-	// }
-	//
-	//
-	//
-	// //5.1 [InvVal] Enviar una invitaci�n de amistad a un usuario de forma valida.
-	// @Test
-	// public void PR10() {
-	// //LOGIN VALIDO
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
-	// //LOGIN VALIDO
-	//
-	// PO_PrivateView.searchUser(driver, "Zelda"); //??
-	// //Agregar Zelda como amigo
-	// By boton = By.id("btnZelda");
-	// driver.findElement(boton).click();
-	//
-	// }
-	//
-	// //5.2 [InvInVal] Enviar una invitaci�n de amistad a un usuario al que ya le
-	// hab�amos invitado la invitaci�n
-	// //previamente. No deber�a dejarnos enviar la invitaci�n, se podr�a ocultar el
-	// bot�n de enviar invitaci�n o
-	// //notificar que ya hab�a sido enviada previamente.
-	// @Test
-	// public void InvInVal() {
-	// //LOGIN VALIDO
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
-	// //LOGIN VALIDO
-	//
-	// PO_PrivateView.searchUser(driver, "Zelda"); //??
-	//
-	// }
-	//
-	// //6.1 [LisInvVal] Listar las invitaciones recibidas por un usuario, realizar
-	// la comprobaci�n con una lista
-	// //que al menos tenga una invitaci�n recibida.
-	// @Test
-	// public void LisInvVal() {
-	// //LOGIN VALIDO
-	// PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "Josefo@gmail.com", "123456");
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "usuariostitle", 2);
-	// //LOGIN VALIDO
-	//
-	// //NECESITAMOS AGREGARLE A MANO UNA PETICION RECIBIDA AL USUARIO
-	// Josefo@gmail.com
-	//
-	// PO_NavView.checkPeticionesRecibidas(driver);
-	// }
-	//
-	// //7.1 [AcepInvVal] Aceptar una invitaci�n recibida
+	// 7.1 [AcepInvVal] Aceptar una invitaci�n recibida
+	@Test
+	public void T07_1_AcepInvVal() {
+		iniciarSesion("joni@correo.es", "123456");
+		PO_NavView.accederPeticionesRecibidas(driver);
+		PO_PrivateView.clickOption(driver, "id", "btnjavier@correo.es");
+		assertTrue(PO_View.checkElementExists(driver, "id", "filaDejavier@correo.es") == false);
+	}
 	// // = Nota A2.
 	// // P13. Ver la lista de Notas.
 	// @Test
@@ -422,4 +427,13 @@ public class RedsocialnatorTests {
 	// // Ahora nos desconectamos
 	// PO_PrivateView.clickOption(driver, "logout", "text", "Identifícate");
 	// }
+
+	private void iniciarSesion(String email, String pass) {
+		// Vamos al formulario de logueo.
+		PO_NavView.clickOption(driver, "id", "login");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, email, pass);
+		// // Comprueba que vea la lista de usuarios
+		// PO_View.checkElement(driver, "id", "bienvenidaUser");
+	}
 }
