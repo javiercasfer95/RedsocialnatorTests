@@ -80,4 +80,52 @@ public class PO_NavView extends PO_View {
 		elementos.get(1).click();
 
 	}
+	
+	public static void clickOptionConCriterio(WebDriver driver, String textOption, String criterio, String textoDestino) {
+		// CLickamos en la opción de registro y esperamos a que se cargue el enlace de
+		// Registro.
+		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, criterio, textOption, getTimeout());
+		// Tiene que haber un sólo elemento.
+		assertTrue(elementos.size() == 1);
+		// Ahora lo clickamos
+		elementos.get(0).click();
+		// Esperamos a que sea visible un elemento concreto
+		elementos = SeleniumUtils.EsperaCargaPagina(driver, criterio, textoDestino, getTimeout());
+		// Tiene que haber un sólo elemento.
+		assertTrue(elementos.size() == 1);
+
+	}
+	
+	
+	public static void clickOption(WebDriver driver, String criterio1, String textOption, String criterio, String textoDestino) {
+        // CLickamos en la opción de registro y esperamos a que se cargue el enlace
+        // deRegistro.
+        List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, criterio1, textOption, getTimeout());
+        // Tiene que haber un sólo elemento.
+        assertTrue(elementos.size() == 1);
+        // Ahora lo clickamos
+        elementos.get(0).click();
+        // Esperamos a que sea visible un elemento concreto
+        elementos = SeleniumUtils.EsperaCargaPagina(driver, criterio, textoDestino, getTimeout());
+        // Tiene que haber un sólo elemento.
+        assertTrue(elementos.size() == 1);
+    }
+	
+	public static void clickOption(WebDriver driver, String criterio, String textOption) {
+        // CLickamos en la opción de registro y esperamos a que se cargue el enlace
+        // deRegistro.
+        List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, criterio, textOption, getTimeout());
+        // Tiene que haber un sólo elemento.
+        assertTrue(elementos.size() == 1);
+        // Ahora lo clickamos
+        elementos.get(0).click();
+
+    }
+	
+	public static void clickLogout(WebDriver driver) {
+		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "id", "logout", getTimeout());
+		elementos.get(0).click();
+
+	}
+	
 }

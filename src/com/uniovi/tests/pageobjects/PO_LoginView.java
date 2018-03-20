@@ -16,7 +16,8 @@ public class PO_LoginView {
 		pass.clear();
 		pass.sendKeys(password);
 		// Pulsar el boton de Alta.
-		By boton = By.className("btn");
+		//By boton = By.className("btn");
+		By boton = By.id("btLogin");
 		driver.findElement(boton).click();
 	}
 
