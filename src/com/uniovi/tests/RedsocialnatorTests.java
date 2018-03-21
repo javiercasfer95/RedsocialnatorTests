@@ -269,7 +269,7 @@ public class RedsocialnatorTests {
 	}
 
 	//
-	// 7.1 [AcepInvVal] Aceptar una invitaci�n recibida
+	// 7.1 [AcepInvVal] Aceptar una invitacion recibida
 	@Test
 	public void T07_1_AcepInvVal() {
 		iniciarSesion("joni@correo.es", "123456");
@@ -277,156 +277,55 @@ public class RedsocialnatorTests {
 		PO_PrivateView.clickOption(driver, "id", "btnjavier@correo.es");
 		assertTrue(PO_View.checkElementExists(driver, "id", "filaDejavier@correo.es") == false);
 	}
-	// // = Nota A2.
-	// // P13. Ver la lista de Notas.
-	// @Test
-	// public void PR13() {
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "99999990A", "123456");
-	// // COmprobamos que entramos en la pagina privada de Alumno
-	// PO_View.checkElement(driver, "text", "Notas del usuario");
-	// SeleniumUtils.esperarSegundos(driver, 1);
-	// // Contamos las notas
-	// By enlace = By.xpath("//td[contains(text(), 'Nota
-	// A2')]/following-sibling::*[2]"); // Para evitar esto lo mejor
-	// // es poner id y nombre
-	// driver.findElement(enlace).click();
-	// SeleniumUtils.esperarSegundos(driver, 1);
-	// // Esperamos por la ventana de detalle
-	// PO_View.checkElement(driver, "text", "Detalles de la nota");
-	// SeleniumUtils.esperarSegundos(driver, 1);
-	// // Ahora nos desconectamos
-	// PO_PrivateView.clickOption(driver, "logout", "text", "Identifícate");
-	// }
-	//
-	// //8.1 [ListAmiVal] Listar los amigos de un usuario, realizar la comprobaci�n
-	// con una lista que al menos tenga un amigo
-	// // encapsularse mejor ...
-	// @Test
-	// public void PR14() {
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	//
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "99999993D", "123456");
-	// // COmprobamos que entramos en la pagina privada del Profesor
-	// PO_View.checkElement(driver, "text", "99999993D");
-	// // Pinchamos en la opción de menu de Notas: //li[contains(@id,
-	// 'marks-menu')]/a
-	// List<WebElement> elementos = PO_View.checkElement(driver, "free",
-	// "//li[contains(@id, 'marks-menu')]/a");
-	// elementos.get(0).click();
-	// // Esperamos a aparezca la opción de añadir nota: //a[contains(@href,
-	// // 'mark/add')]
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,
-	// 'mark/add')]");
-	// // Pinchamos en agregar Nota.
-	// elementos.get(0).click();
-	// // Ahora vamos a rellenar la nota. //option[contains(@value, '4')]
-	// PO_PrivateView.fillFormAddMark(driver, 3, "Nota Nueva 1", "8");
-	// // Esperamos a que se muestren los enlaces de paginación la lista de notas
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@class,
-	// 'page-link')]");
-	// // Nos vamos a la última página
-	// elementos.get(3).click();
-	// // Comprobamos que aparece la nota en la pagina
-	// elementos = PO_View.checkElement(driver, "text", "Nota Nueva 1");
-	// // Ahora nos desconectamos
-	// PO_PrivateView.clickOption(driver, "logout", "text", "Identifícate");
-	// }
-	//
-	// //9.1 [PubVal] Crear una publicaci�n con datos v�lidos.
-	// // Nueva 1.
-	// // PRN. Ver la lista de Notas.
-	// @Test
-	// public void PR15() {
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "99999993D", "123456");
-	// // COmprobamos que entramos en la pagina privada del Profesor
-	// PO_View.checkElement(driver, "text", "99999993D");
-	// // Pinchamos en la opción de menu de Notas: //li[contains(@id,
-	// 'marks-menu')]/a
-	// List<WebElement> elementos = PO_View.checkElement(driver, "free",
-	// "//li[contains(@id, 'marks-menu')]/a");
-	// elementos.get(0).click();
-	// // Pinchamos en la opción de lista de notas.
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,
-	// 'mark/list')]");
-	// elementos.get(0).click();
-	// // Esperamos a que se muestren los enlaces de paginacion la lista de notas
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@class,
-	// 'pagelink')]");
-	// // Nos vamos a la última página
-	// elementos.get(3).click();
-	// // Esperamos a que aparezca la Nueva nota en la ultima pagina
-	//
-	// // Y Pinchamos en el enlace de borrado de la Nota "Nota Nueva 1"
-	// // //td[contains(text(), 'Nota Nueva
-	// // 1')]/following-sibling::*/a[contains(text(), 'mark/delete')]"
-	// elementos = PO_View.checkElement(driver, "free",
-	// "//td[contains(text(), 'Nota Nueva
-	// 1')]/following-sibling::*/a[contains(@href, 'mark/delete')]");
-	// elementos.get(0).click();
-	// // Volvemos a la última pagina
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@class,
-	// 'pagelink')]");
-	// elementos.get(3).click();
-	// // Y esperamos a que NO aparezca la ultima "Nueva Nota 1"
-	// SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "Nota Nueva 1",
-	// PO_View.getTimeout());
-	// // Ahora nos desconectamos
-	// PO_PrivateView.clickOption(driver, "logout", "text", "Identifícate");
-	// }
 
-	// //10.1 [LisPubVal] Acceso al listado de publicaciones desde un usuario en
-	// sesi�n.
-	// // Nueva 1.
-	// // PRN. Ver la lista de Notas.
-	// @Test
-	// public void PR15() {
-	// // Vamos al formulario de logueo.
-	// PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-	// // Rellenamos el formulario
-	// PO_LoginView.fillForm(driver, "99999993D", "123456");
-	// // COmprobamos que entramos en la pagina privada del Profesor
-	// PO_View.checkElement(driver, "text", "99999993D");
-	// // Pinchamos en la opción de menu de Notas: //li[contains(@id,
-	// 'marks-menu')]/a
-	// List<WebElement> elementos = PO_View.checkElement(driver, "free",
-	// "//li[contains(@id, 'marks-menu')]/a");
-	// elementos.get(0).click();
-	// // Pinchamos en la opción de lista de notas.
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,
-	// 'mark/list')]");
-	// elementos.get(0).click();
-	// // Esperamos a que se muestren los enlaces de paginacion la lista de notas
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@class,
-	// 'pagelink')]");
-	// // Nos vamos a la última página
-	// elementos.get(3).click();
-	// // Esperamos a que aparezca la Nueva nota en la ultima pagina
-	//
-	// // Y Pinchamos en el enlace de borrado de la Nota "Nota Nueva 1"
-	// // //td[contains(text(), 'Nota Nueva
-	// // 1')]/following-sibling::*/a[contains(text(), 'mark/delete')]"
-	// elementos = PO_View.checkElement(driver, "free",
-	// "//td[contains(text(), 'Nota Nueva
-	// 1')]/following-sibling::*/a[contains(@href, 'mark/delete')]");
-	// elementos.get(0).click();
-	// // Volvemos a la última pagina
-	// elementos = PO_View.checkElement(driver, "free", "//a[contains(@class,
-	// 'pagelink')]");
-	// elementos.get(3).click();
-	// // Y esperamos a que NO aparezca la ultima "Nueva Nota 1"
-	// SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "Nota Nueva 1",
-	// PO_View.getTimeout());
-	// // Ahora nos desconectamos
-	// PO_PrivateView.clickOption(driver, "logout", "text", "Identifícate");
-	// }
+	// 8.1 [ListAmiVal] Listar los amigos de un usuario, realizar la comprobacion
+	// con una lista que al menos tenga un amigo.
+	@Test
+	public void T08_1_ListAmiVal() {
+		iniciarSesion("javier@correo.es", "123456");
+		PO_NavView.accederAmigos(driver);
+		PO_View.checkElement(driver, "id", "filaDejoni@correo.es");
+	}
+
+	/*
+	 * 14.1 [AdLisUsrVal] Desde un usuario identificado en sesión como administrador
+	 * listar a todos los usuarios de la aplicación.
+	 */
+	@Test
+	public void T14_1_AdLisUsrVal() {
+		iniciarSesion("admin@correo.es", "123456");
+		PO_NavView.clickOptionConCriterio(driver, "userAdminMenu", "id", "userAdminMenu");
+		PO_NavView.clickOption(driver, "id", "adminListUsers");
+		PO_View.checkElement(driver, "id", "tituloPagAdmin");
+	}
+
+	/*
+	 * 15.1 [AdBorUsrVal] Desde un usuario identificado en sesión como administrador
+	 * eliminar un usuario existente en la aplicación.
+	 */
+	@Test
+	public void T15_1_AdBorUsrVal() {
+		iniciarSesion("admin@correo.es", "123456");
+		PO_NavView.clickOptionConCriterio(driver, "userAdminMenu", "id", "userAdminMenu");
+		PO_NavView.clickOption(driver, "id", "adminListUsers");
+		PO_View.checkElement(driver, "id", "tituloPagAdmin");
+		PO_PrivateView.clickOption(driver, "id", "borrarjavier@correo.es");
+		PO_PrivateView.searchUser(driver, "javi");
+		assertTrue(PO_View.checkElementExists(driver, "id", "filaDejavier@correo.es") == false);
+	}
+
+	/*
+	 * 15.2 [AdBorUsrInVal] Intento de acceso vía URL al borrado de un usuario
+	 * existente en la aplicación. Debe utilizarse un usuario identificado en sesión
+	 * pero que no tenga perfil de administrador.
+	 */
+
+	@Test
+	public void T15_2_AdBorUsrInVal() {
+		iniciarSesion("joni@correo.es", "123456");
+		driver.navigate().to("http://localhost:8090/debug/deleteUser?userBorraEmail=AshRodriguez@default.es");
+		PO_View.checkElement(driver, "id", "tituloAccesoDenegado");
+	}
 
 	private void iniciarSesion(String email, String pass) {
 		// Vamos al formulario de logueo.

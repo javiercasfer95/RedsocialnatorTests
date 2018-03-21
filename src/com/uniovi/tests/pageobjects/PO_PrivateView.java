@@ -26,7 +26,6 @@ public class PO_PrivateView extends PO_NavView {
 //	}
 
 	public static void searchUser(WebDriver driver, String userName) {
-		SeleniumUtils.esperarSegundos(driver, 2);
 		WebElement search = driver.findElement(By.id("search"));
 		search.click();
 		search.clear();
@@ -35,6 +34,7 @@ public class PO_PrivateView extends PO_NavView {
 		// Pulsar el boton de buscar
 		By boton = By.id("searchButton");		
 		driver.findElement(boton).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
 	}
 	
 	
