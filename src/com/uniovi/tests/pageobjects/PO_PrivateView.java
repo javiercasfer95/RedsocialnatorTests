@@ -8,36 +8,34 @@ import org.openqa.selenium.support.ui.Select;
 import com.uniovi.tests.utils.SeleniumUtils;
 
 public class PO_PrivateView extends PO_NavView {
-//	static public void fillFormAddMark(WebDriver driver, int userOrder, String descriptionp, String scorep) {
-//		// Esperamos 5 segundo a que carge el DOM porque en algunos equipos falla
-//		SeleniumUtils.esperarSegundos(driver, 5);
-//		// Seleccionamos el alumno userOrder
-//		new Select(driver.findElement(By.id("user"))).selectByIndex(userOrder);
-//		// Rellenemos el campo de descripción
-//		WebElement description = driver.findElement(By.name("description"));
-//		description.clear();
-//		description.sendKeys(descriptionp);
-//		WebElement score = driver.findElement(By.name("score"));
-//		score.click();
-//		score.clear();
-//		score.sendKeys(scorep);
-//		By boton = By.className("btn");
-//		driver.findElement(boton).click();
-//	}
+    // static public void fillFormAddMark(WebDriver driver, int userOrder, String
+    // descriptionp, String scorep) {
+    // // Esperamos 5 segundo a que carge el DOM porque en algunos equipos falla
+    // SeleniumUtils.esperarSegundos(driver, 5);
+    // // Seleccionamos el alumno userOrder
+    // new Select(driver.findElement(By.id("user"))).selectByIndex(userOrder);
+    // // Rellenemos el campo de descripción
+    // WebElement description = driver.findElement(By.name("description"));
+    // description.clear();
+    // description.sendKeys(descriptionp);
+    // WebElement score = driver.findElement(By.name("score"));
+    // score.click();
+    // score.clear();
+    // score.sendKeys(scorep);
+    // By boton = By.className("btn");
+    // driver.findElement(boton).click();
+    // }
 
-	public static void searchUser(WebDriver driver, String userName) {
-		WebElement search = driver.findElement(By.id("search"));
-		search.click();
-		search.clear();
-		search.sendKeys(userName);
-		
-		// Pulsar el boton de buscar
-		By boton = By.id("searchButton");		
-		driver.findElement(boton).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-	}
-	
-	
-	
+    public static void searchUser(WebDriver driver, String userName) {
+	WebElement search = driver.findElement(By.id("search"));
+	search.click();
+	search.clear();
+	search.sendKeys(userName);
+
+	// Pulsar el boton de buscar
+	By boton = By.id("searchButton");
+	driver.findElement(boton).click();
+	SeleniumUtils.esperarSegundos(driver, 2);
+    }
 
 }
