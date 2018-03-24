@@ -58,6 +58,7 @@ public class RedsocialnatorTests {
 	PO_LoginView.fillForm(driver, "admin@correo.es", "123456");
 	PO_NavView.clickOptionConCriterio(driver, "userAdminMenu", "id", "userAdminMenu");
 	PO_NavView.clickOption(driver, "id", "restoreDBDefault");
+	SeleniumUtils.EsperaCargaPagina(driver, "id", "logout", 2);
 	PO_NavView.clickLogout(driver);
 
     }
@@ -324,6 +325,7 @@ public class RedsocialnatorTests {
 	// Rellenamos el formulario
 	PO_LoginView.fillForm(driver, email, pass);
 	// // Comprueba que vea la lista de usuarios
+	SeleniumUtils.esperarSegundos(driver, 1);
 
     }
 }
