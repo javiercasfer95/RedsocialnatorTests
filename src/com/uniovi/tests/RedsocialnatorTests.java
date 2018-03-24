@@ -1,8 +1,6 @@
 package com.uniovi.tests;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,9 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 //import com.uniovi.services.DatosEjemplo;
@@ -23,7 +19,6 @@ import com.uniovi.tests.pageobjects.PO_NavView;
 import com.uniovi.tests.pageobjects.PO_PrivateView;
 import com.uniovi.tests.pageobjects.PO_Properties;
 import com.uniovi.tests.pageobjects.PO_RegisterView;
-import com.uniovi.tests.pageobjects.PO_UsersListView;
 import com.uniovi.tests.pageobjects.PO_View;
 import com.uniovi.tests.utils.SeleniumUtils;
 
@@ -159,9 +154,9 @@ public class RedsocialnatorTests {
 	PO_HomeView.clickOption(driver, "login", "id", "login");
 	// Rellenamos el formulario
 	PO_LoginView.fillForm(driver, "javier@correo.es", "123456");
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
 	// LOGIN VALIDO
-	// Una vez dentro clickamos en home y que nos lleve a la lista de usuarios del
+	// Una vez dentro clickamos en Usuarios y que nos lleve a la lista de usuarios
+	// del
 	// sistema.
 	PO_HomeView.clickOption(driver, "id", "userListPage");
 
@@ -180,7 +175,6 @@ public class RedsocialnatorTests {
 	PO_HomeView.checkWelcome(driver, PO_Properties.getSPANISH());
 	driver.navigate().to("http://localhost:8090/user/list");
 	// Nos deberia redirigir a la pagina del login
-	// SeleniumUtils.EsperaCargaPagina(driver, "id", "login", 2);
 	PO_View.checkElement(driver, "id", "identificateField");
     }
 
@@ -256,7 +250,6 @@ public class RedsocialnatorTests {
 	resetDatabaseToDefault();
 	iniciarSesion("javier@correo.es", "123456");
 	// Vamos a la pagina de usuarios por si acaso
-	// PO_PrivateView.clickOption(driver, "id", "userListPage");
 	PO_PrivateView.searchUser(driver, "joni");
 	PO_PrivateView.clickOption(driver, "id", "btnjoni@correo.es");
 
@@ -331,6 +324,6 @@ public class RedsocialnatorTests {
 	// Rellenamos el formulario
 	PO_LoginView.fillForm(driver, email, pass);
 	// // Comprueba que vea la lista de usuarios
-	// PO_View.checkElement(driver, "id", "bienvenidaUser");
+
     }
 }
